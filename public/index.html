@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+#image {
+	max-width:50%;
+	
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Formulario de criação de Gravura</h1>
+
+<form action="/salvar" method="POST" enctype="multipart/form-data" >
+  <label for="myfile">Escolha uma foto</label>
+  <input type="file" id="gravura" onchange="preview_image(event);hiddenData()" name="gravs"><br>
+<div id='box'>
+	<img id='image'>
+</div>
+
+ <input type="text" id="texto" name="refgrav"><br>
+
+ <input type="hidden" id="sumido" name="sumido"><br>
+
+  <input type="submit">
+</form>
+
+<script type='text/javascript'>
+function hiddenData() {
+  var d = new Date();
+  var n = d.toLocaleString();
+  document.getElementById("sumido").value = n;
+}
+
+function preview_image(event){
+	var reader = new FileReader();
+	reader.onload = function(){
+  		var output = document.getElementById('image');
+  		output.src = reader.result;
+  	}
+	reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+</body>
+</html>
