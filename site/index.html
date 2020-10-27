@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Register service worker -->
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio</title>
+   
+    <!-- Start of Web Manifest -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <!-- Theme-color -->
+    <meta name="theme-color" content="#ff3385" />
+    <link href="css/estilo.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>Gravuras</h1>
+	</header>
+	
+	<div id='box'></div>
+    
+    <script src="js/script.js"></script>
+    <script>
+	    fetchJSON("bases/lista-imgs.json")
+    </script>
+    <script>
+ //   console.log("tá on")
+	    if ('serviceWorker' in navigator) {
+		    window.addEventListener('load', function () {
+			    navigator.serviceWorker.register('/service-worker.js')
+			    .then(function () { console.log('[ PWA Fire Bundle ] Service Worker Registered'); });
+		    });
+	    }
+    </script>
+</body>
+
+</html>

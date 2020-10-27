@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gravura</title>
+   
+    <!-- Start of Web Manifest -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <!-- Theme-color -->
+    <meta name="theme-color" content="#ff3385" />
+    <link href="css/estilo.css" rel="stylesheet">
+</head>
+<body>
+	<div id='banner-img'></div>
+	<div id="bot-volta" >
+		<a href="/index.html" >voltar</a>
+	</div>
+
+
+
+
+    
+    <script src="js/script.js"></script>
+    
+    <script>
+    
+    
+    
+    let params = (new URL(document.location)).searchParams;
+ 	fetchGravura(params.get('id'))
+ 	
+    </script>
+</body>
+
+</html>
