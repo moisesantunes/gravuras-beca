@@ -5,14 +5,31 @@
 }
 header h1{
 	font-weight:lighter;
-	text-align:center;			
+	text-align:center;		
+	margin-top:2vh;	
+	padding:1vw;
 }
+/*estilo do card container*/
+#box-container {
+display:flex;
+width:100%;
+flex-flow:row wrap;	
+margin-top:2vh;
+}
+#box-container section {
+	margin:1vw auto;
+}
+
+#box-container #card-container:last-child {
+	margin:1.5vw;
+}
+
 /*Estilos dos cards*/
 #card{
-	width:90vw;
+	width:46vw;
 	border:.5vw solid #ff3385;
 	border-radius: 2vw;
-	margin: 2vw auto;
+	
 }
 #card img{
 	width:95%;
@@ -22,7 +39,7 @@ header h1{
 }
 #card p{
 	padding:3vw;
-	font-size:5vw;
+	font-size:4vw;
 	text-align:center;	
 }
 #card a{
@@ -56,17 +73,16 @@ margin:1vh auto;
 	padding:10px;				
 }
 #banner #b_social img{
-width:10%;
+	width:7.5%;
 }
 #bot-volta {
-text-align:center;
-margin: 3vh auto;
-
+	text-align:center;
+	margin: 2vh auto;		
 }
 #bot-volta a{
 	text-decoration:none;
 	color:white;
 	background-color:#ff3385;
-	padding:3vw 6vw;
-	font-size: 5vw;
+	padding:2.5vw 5vw;
+	font-size: 4vw;
 }

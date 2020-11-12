@@ -1,27 +1,57 @@
 function glink(){
 	return document.location.href;
 }
-/*
-<a href="whatsapp://send?text=TITULO &ndash; LINK" title="Acesse de seu smartphone para enviar por WhatsApp">WhatsApp</a>
-javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.location.href)}
-*/
+function mostra_banner(nome_img, id_img, ref_img){
+//alert(nome_img+id_img+ref_img)
+let link_f=glink()+"figura.html?id="+id_img
+	let banner_img =`
+	<div id='banner'>
+		<h2>${ref_img}</h2>
+		<img   src='gravuras/${nome_img}'>
+		<div id='b_social'>
+			<a href="whatsapp://send?text=${link_f}" title="Acesse de seu smartphone para enviar por WhatsApp">
+				<img   src='/images/whatsapp.png'>
+			</a>
+			<a href="/gravuras/${nome_img}" download="${ref_img}.jpg">
+				<img src="/images/photo.png" alt="baixar" >
+			</a>
+			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${ref_img}&url=${link_f}&via=moansilva">
+				<img   src='/images/twitter.png'>	
+			</a>
+		</div>
+		<div id="bot-volta" >
+			<a href="/" >voltar</a>
+		</div>
+		
+	</div>`
+	let boxContainer = document.getElementById('box-container')	
+	//apaga os cards
+	boxContainer.querySelectorAll('SECTION').forEach(n => n.remove());
+	//insere o banner
+	let banner =document.createElement("SECTION");
+	banner.innerHTML =banner_img;
+	boxContainer.appendChild(banner)
+
+}
+
 function logResult(result) {
-  console.log(result);
   let conteudo='';
-  let box= document.getElementById('box')
-  //	alert(Object.keys(result[0]))
+  let boxContainer = document.getElementById('box-container')
   for(let r of result){
-  //	alert(r.refgrav)
-  	conteudo +=`
+  	conteudo =`
   			<div id='card'>
-  				<a href='figura.html?id=${r.id}'>
+  				<a href='javascript:mostra_banner("${r.nomegrav}","${r.id}","${r.refgrav}")'>
   					<img   src='gravuras/${r.nomegrav}'>
      				<p>${r.refgrav}</p>
      			</a>
      		</div>`
+     		
+     let card =document.createElement("SECTION");
+     card.id ="card-container";
+     card.innerHTML =conteudo;
+     boxContainer.appendChild(card)
     }
-  ///  
- box.innerHTML= conteudo; 
+  ///  box.innerHTML= conteudo; 
  /// 
 }
 
@@ -74,13 +104,4 @@ function fetchGravura(elemento) {
  ///
 }) // 4
   .catch(logError);
-}
-
-
-
-//fetchJSON('bases/lista-imgs.json');
-
-
-function oi(mane){
-	alert(mane)
 }

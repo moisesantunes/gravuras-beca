@@ -1,19 +1,16 @@
 
-
-let cache_cont= "ver_4";
+let cache_cont= "ver_2";
 const shell_files=[
 	"/",
 	"/index.html",
 	"/figura.html",
 	"/js/script.js",
 	"/css/estilo.css",
-	"/gravuras/",
 	"/bases/lista-imgs.json",
 	"/favicon.ico",
 	"/images/twitter.png",
 	"/images/whatsapp.png",
 	"/images/photo.png"
-
 ]
 
 
@@ -26,7 +23,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-	event.respondWith(caches.open('cache').then((cache) => {
+	event.respondWith(caches.open(cache_cont).then((cache) => {
 		return cache.match(event.request).then((response) => {
 			console.log("cache request: " + event.request.url);
 			var fetchPromise = fetch(event.request).then((networkResponse) => {           
@@ -43,17 +40,19 @@ self.addEventListener('fetch', (event) => {
 // Name the *cache* in the caches.open()...
 						caches.open(cache_cont).then((cache) => { 
 // Take a list of URLs, then fetch them from the server and add the response to the cache...
-							return cache.addAll(
-						//	shell_files
+							return cache.addAll(shell_files
+/*
 
 							[ 
 								'/index.html', 
 								'/css/estilo.css', 
 								'/js/script.js', 
 								'/images/*',
+								'/gravuras/*',
 								"/" ,
 								"/figura.html"     
 							]
+						*/
 							);
 						})
 					);
@@ -96,7 +95,7 @@ self.addEventListener('fetch', (e) => {
 		})
 	 );
 });
-
+*/
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keyList) => {
@@ -108,10 +107,9 @@ self.addEventListener('activate', (e) => {
 
       );
     })
-    self.skipWaiting()
   );
 });
-*/
+
 
 
 /*
